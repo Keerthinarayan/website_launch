@@ -55,7 +55,24 @@ function App() {
       color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
     }));
     setConfettiParticles(particles);
-    setTimeout(() => setConfettiParticles([]), 5000);
+    
+    // Create new confetti particles every few seconds
+    const confettiInterval = setInterval(() => {
+      setConfettiParticles(prev => {
+        const newParticles = Array.from({ length: 20 }, (_, i) => ({
+          id: `new-${Date.now()}-${i}`,
+          x: Math.random() * window.innerWidth,
+          y: -10,
+          rotation: Math.random() * 360,
+          speed: Math.random() * 5 + 3,
+          color: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
+        }));
+        return [...prev.filter(p => p.y < window.innerHeight), ...newParticles];
+      });
+    }, 2000);
+    
+    // Clear interval when component unmounts
+    return () => clearInterval(confettiInterval);
   }, []);
 
   const handleButtonClick = (e) => {
@@ -63,6 +80,13 @@ function App() {
     setRipple({ x: e.clientX - rect.left, y: e.clientY - rect.top });
     setTimeout(() => setRipple(null), 600);
   };
+
+  // Cleanup function when component unmounts
+  useEffect(() => {
+    return () => {
+      // Clear any timeouts or intervals when component unmounts
+    };
+  }, []);
 
   useEffect(() => {
     createStars();
@@ -132,7 +156,7 @@ function App() {
           {/* Title */}
           <div className="flex items-center justify-center mb-8">
             {launchReached ? (
-              <Sparkles className="w-16 h-16 mr-4 text-yellow-400 animate-spin-slow" />
+              <Code2 className="w-16 h-16 mr-4 animate-pulse" />
             ) : (
               <Code2 className="w-16 h-16 mr-4 animate-pulse" />
             )}
@@ -165,7 +189,7 @@ function App() {
                   }}
                   onClick={(e) => {
                     handleButtonClick(e);
-                    window.location.href = "https://your-website-url.com";
+                    window.location.href = "https://github.com/Keerthinarayan/website_launch";
                   }}
                 >
                   {ripple && (
