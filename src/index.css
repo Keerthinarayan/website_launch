@@ -94,7 +94,7 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  background: linear-gradient(to right, #7539a9, #be6edd);
+  background: linear-gradient(to right, #00629B, #78BE20);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -117,7 +117,7 @@
 }
 
 .moving-gradient-text {
-  background: linear-gradient(270deg, #522081, #be6edd, #cc369b, #6d1c68);
+  background: linear-gradient(270deg, #00629B, #3a7ba8, #78BE20, #00629B);
   background-size: 200% 200%;
   animation: moving-gradient 5s ease infinite;
   -webkit-background-clip: text;
