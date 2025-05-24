@@ -15,7 +15,6 @@ function App() {
   const [ripple, setRipple] = useState(null);
   const [isHovering, setIsHovering] = useState(false);
 
-  // Lock page to screen
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     return () => {
@@ -56,7 +55,6 @@ function App() {
     }));
     setConfettiParticles(particles);
     
-    // Create new confetti particles every few seconds
     const confettiInterval = setInterval(() => {
       setConfettiParticles(prev => {
         const newParticles = Array.from({ length: 20 }, (_, i) => ({
@@ -71,7 +69,6 @@ function App() {
       });
     }, 2000);
     
-    // Clear interval when component unmounts
     return () => clearInterval(confettiInterval);
   }, []);
 
@@ -81,10 +78,8 @@ function App() {
     setTimeout(() => setRipple(null), 600);
   };
 
-  // Cleanup function when component unmounts
   useEffect(() => {
     return () => {
-      // Clear any timeouts or intervals when component unmounts
     };
   }, []);
 
@@ -94,7 +89,7 @@ function App() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const launchDate = new Date('2025-05-16T13:00:00').getTime();
+      const launchDate = new Date('2025-05-1T13:00:00').getTime();
       const now = new Date().getTime();
       const difference = launchDate - now;
 
@@ -118,10 +113,13 @@ function App() {
   }, [launchReached, createParticles, createConfetti]);
 
   return (
-    <div className="fixed inset-0 bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white overflow-hidden">
+      <div className="fixed inset-0 text-white overflow-hidden" style={{
+      background: 'linear-gradient(135deg, #05081a 0%, #070c21 15%, #0a1128 20%, #0f1a40 90%,#071d59 100%)'
+    }}>
       {/* Background Elements */}
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?ixlib=rb-1.2.1&auto=format&fit=crop&w=2342&q=80')] opacity-20 bg-cover bg-center" />
-      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 opacity-30" style={{
+        background: 'radial-gradient(circle at center,rgba(26, 58, 143, 0.25) 0%, transparent 70%)'
+      }} />
 
       {/* Stars */}
       {!launchReached && stars.map((star) => (
@@ -165,7 +163,7 @@ function App() {
 
           {/* Subtitle */}
           <p className="text-xl md:text-2xl text-center mb-12 opacity-90">
-            {launchReached ? 'IEEE SPS Website Launch!' : "We're cooking 🧑‍🍳🍳 up something special. Stay tuned!"}
+            {launchReached ? 'IEEE SPS Website Launch!' : "We're cooking 🧑‍🍳 up something special. Stay tuned!"}
           </p>
 
           {/* Countdown or Button */}
@@ -177,19 +175,19 @@ function App() {
                   onMouseLeave={() => setIsHovering(false)}
                   className="relative inline-flex items-center justify-center px-12 py-5 text-2xl font-bold tracking-wide text-white rounded-full overflow-hidden group transition-all duration-300"
                   style={{
-                    background: 'linear-gradient(to right, #522081, #be6edd, #cc369b, #6d1c68, #522081)',
+                    background: 'linear-gradient(to right, #00629B, #3a7ba8, #78BE20, #00629B)',
                     backgroundSize: '200% 100%',
                     animation: 'moveGradientSmoothly 8s linear infinite',
                     border: '2px solid rgba(255, 255, 255, 0.15)',
                     transform: isHovering ? 'scale(1.05)' : 'scale(1)',
                     transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                     boxShadow: isHovering 
-                      ? '0 0 20px rgba(190, 110, 221, 0.7), 0 0 30px rgba(204, 54, 155, 0.5)'
+                      ? '0 0 20px rgba(0, 98, 155, 0.7), 0 0 30px rgba(120, 190, 32, 0.5)'
                       : '0 0 0 rgba(0, 0, 0, 0)'
                   }}
                   onClick={(e) => {
                     handleButtonClick(e);
-                    window.location.href = "https://github.com/Keerthinarayan/website_launch";
+                    window.location.href = "https://www.decodex.one/";
                   }}
                 >
                   {ripple && (
