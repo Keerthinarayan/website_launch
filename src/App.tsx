@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { Timer, Code2, Sparkles } from 'lucide-react';
+import { Timer, Sparkles } from 'lucide-react';
 
 function App() {
   const [timeLeft, setTimeLeft] = useState({
@@ -153,11 +153,6 @@ function App() {
 
           {/* Title */}
           <div className="flex items-center justify-center mb-8">
-            {launchReached ? (
-              <Code2 className="w-16 h-16 mr-4 animate-pulse" />
-            ) : (
-              <Code2 className="w-16 h-16 mr-4 animate-pulse" />
-            )}
             <h1 className="text-6xl md:text-8xl font-bold moving-gradient-text">Decode X</h1>
           </div>
 
