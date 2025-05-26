@@ -89,7 +89,7 @@ function App() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const launchDate = new Date('2025-05-26T16:35:00').getTime();
+      const launchDate = new Date('2025-05-26T16:39:00').getTime();
       const now = new Date().getTime();
       const difference = launchDate - now;
 
